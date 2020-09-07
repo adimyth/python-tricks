@@ -4,7 +4,6 @@
 ## Commitizen
 Dependencies -
 * NodeJS
-* Yarn
 
 ### Installing NodeJS
 GitHub Project - https://github.com/asdf-vm/asdf-nodejs
@@ -28,33 +27,16 @@ asdf local nodejs 14.9.0    # set current version to use
 asdf current nodejs     # sanity check
 ```
 
-### Installing Yarn
-* Install Yarn
-```bash
-asdf plugin add yarn
-asdf install yarn latest
-```
-* Set current version
-```bash
-asdf list yarn    # check yarn version; 1.22.5 here
-asdf local yarn 1.22.5    # set current version to use
-asdf current yarn     # sanity check
-```
-
 ### Installing Commitizen
 ```bash
-yarn global add commitizen
-yarn install
+npm install -g commitizen
+npm install -g cz-conventional-changelog
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
 ```
-To use, run the following -
+To use, run `git-cz` instead of `git commit`-
 ```bash
 git-cz
+cz
+git cz
 ```
-In case, the binary `git-cz` is not found, then find the yarn binary path
-```
-yarn global bin
-```
-Try again by prefixing the output of previous step -
-```bash
-/Users/adimyth/.asdf/installs/nodejs/14.9.0/.npm/bin/git-cz
-```
+Either of the 3 works
