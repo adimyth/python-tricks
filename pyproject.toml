@@ -10,6 +10,7 @@ black = "^20.8b1"
 flake8 = "^3.8.3"
 numpy = "^1.19.1"
 rich = "^6.0.0"
+inflect = "^4.1.0"
 
 [tool.poetry.dev-dependencies]
 commitizen = "^2.1.0"

@@ -17,11 +17,16 @@ All the experiments are run on `python 3.7`.
 	```bash
 	asdf current python
 	```
-3. Install poetry & required libraries. [Poetry](https://python-poetry.org/docs/) is a python dependency management & packaging tool. Allows us to declare project libraries dependency & manage them
+3. Install poetry. [Poetry](https://python-poetry.org/docs/) is a python dependency management & packaging tool. Allows us to declare project libraries dependency & manage them
 	```bash
-	pip install poetry	# not the recommended method, but works just fine
-	poetry install	# installs all the dependencies
+	asdf plugin add poetry
+	asdf install poetry latest # current 1.0.10; might need sudo
+	asdf local poetry 1.0.10
 	```
+4. Install all dependencies
+```bash
+poetry install
+```
 
 ## Running an experiment
 To run an experiment, simply run the corresponding script. For example - to demonstrate *memoization* experiment.
