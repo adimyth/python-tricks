@@ -43,6 +43,7 @@ import time
 import inflect  # type: ignore
 import numpy as np  # type: ignore
 
+from logger import singleton_logger
 from utils import draw_boxes
 
 
@@ -53,9 +54,7 @@ def timer(func):
     def inner(*args, **kwargs):
         start_time = time.perf_counter()
         values = func(*args, **kwargs)
-        print(
-            f"[INFO] {func.__name__!r} took {(time.perf_counter() - start_time):.6f} sc"
-        )
+        logger.info(f"{func.__name__!r} took {(time.perf_counter() - start_time):.6f}s")
         # Step 2: Inner function must return passed functions output
         return values
 
@@ -70,7 +69,7 @@ def repeat(num_times=4):
             # library to convert {1:1st, 2:2nd, 3:3rd}
             p = inflect.engine()
             for i in range(1, num_times + 1):
-                print(f"Calling {func.__name__!r} {p.ordinal(i)} time")
+                logger.info(f"{func.__name__!r} {p.ordinal(i)} time")
                 value = func(*args, **kwargs)
             return value
 
@@ -99,6 +98,8 @@ def check_prime(val: int) -> bool:
 
 
 if __name__ == "__main__":
+    logger = singleton_logger()
+
     draw_boxes("Simple Decorator")
     _ = factorial(300)
 
